@@ -1,6 +1,6 @@
 export default {
     basePath: '/',
-    appDir: '/pages',
+    appDir: './pages',
     logging: {
         requests: false,
         level: 'debug',

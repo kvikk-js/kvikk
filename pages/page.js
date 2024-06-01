@@ -1,9 +1,15 @@
-import { html } from 'lit';
+import { html, isServer } from 'lit';
 
 import layout from '#layouts/layout.js';
 
 import button from '#components/button.js';
 import card from '#components/card.js';
+
+export const metadata = () => {
+    return {
+        title: 'A page title',
+    }
+}
 
 export default () => {
     return html`
