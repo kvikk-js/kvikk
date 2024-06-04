@@ -12,7 +12,10 @@
     "start": "NODE_ENV=production node --import=tsx ./lib/server/main.js",
     "dev:js": "node ./lib/server/main.js ",
     "dev:ts": "node --import=tsx ./lib/server/main.js",
-    "dev": "npm run dev:ts"
+    "dev": "npm run dev:ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test": "node --test"
   },
   "author": "",
   "license": "MIT",
@@ -44,6 +47,13 @@
     "tsx": "4.11.0"
   },
   "devDependencies": {
-    "lit": "3.1.3"
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "eslint": "8.52.0",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-prettier": "5.0.1",
+    "lit": "3.1.3",
+    "prettier": "3.0.3",
+    "semantic-release": "22.0.6"
   }
 }

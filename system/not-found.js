@@ -1,5 +1,5 @@
 import { html } from 'lit';
 
 export default () => {
-    return html`Error - Not Found`;
-}
+  return html`Error - Not Found`;
+};
