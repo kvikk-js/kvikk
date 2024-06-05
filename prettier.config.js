@@ -1,4 +1,4 @@
 export default {
-    tabWidth: 4,
-    singleQuote: true,
+  singleQuote: true,
+  printWidth: 120,
 };

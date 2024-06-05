@@ -1,21 +1,20 @@
-import eslintConfigPrettier from "eslint-config-prettier";
-import globals from "globals";
-import js from "@eslint/js";
+import eslintPluginPrettier from 'eslint-plugin-prettier/recommended';
+import globals from 'globals';
+import js from '@eslint/js';
 
 export default [
-	js.configs.recommended,
-    {
-        languageOptions: {
-            ecmaVersion: 2022,
-            sourceType: "module",
-            globals: {
-                ...globals.node,
-            }
-        },
-		
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: {
+        ...globals.node,
+      },
     },
-	{
-		ignores: ["build/**/*.js", "pages/*", "components/*", "layouts/*"],
-	},
-	eslintConfigPrettier
+  },
+  {
+    ignores: ['build/**/*.js', 'pages/*', 'components/*', 'layouts/*'],
+  },
+  eslintPluginPrettier,
 ];
