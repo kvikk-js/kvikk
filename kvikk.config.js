@@ -5,13 +5,13 @@ export default [
       requests: false,
       level: 'debug',
       name: 'default',
-    }
+    },
   },
 
   // Compression
   {
     compression: {
       enable: true,
-    }
-  }
+    },
+  },
 ];

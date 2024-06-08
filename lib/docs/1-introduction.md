@@ -1,6 +1,6 @@
 # Introduction
 
-Kvikk aim to make it easy to build highly performant web applications with Lit based Web Components. 
+Kvikk.js aim to make it easy to build highly performant web applications with Lit based Web Components. 
 
 
 

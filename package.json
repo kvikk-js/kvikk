@@ -8,7 +8,7 @@
     "#layouts/*": "./layouts/*"
   },
   "scripts": {
-    "build": "node ./lib/build/javascript.js",
+    "build": "node ./lib/build/build.js",
     "start": "NODE_ENV=production node --import=tsx ./lib/server/main.js",
     "dev:js": "node ./lib/server/main.js ",
     "dev:ts": "node --import=tsx ./lib/server/main.js",
