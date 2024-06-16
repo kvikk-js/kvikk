@@ -1,17 +1,38 @@
 export default [
+  // Directories
+  {
+    directories: {
+      // src: './',
+      // components: './components',
+      // layouts: './layouts',
+      // public: './public',
+      // system: './system',
+      // build: './build',
+      // pages: './pages',
+    },
+  },
+
+  // Server
+  {
+    server: {
+      // port: 4000,
+      // host: '0.0.0.0',
+    },
+  },
+
   // Logging
   {
     logging: {
-      requests: false,
-      level: 'debug',
-      name: 'default',
+      // requests: false,
+      // level: 'debug',
+      // name: 'Kvikk.js',
     },
   },
 
   // Compression
   {
     compression: {
-      enable: true,
+      // enable: true,
     },
   },
 ];

@@ -1,3 +1,10 @@
 import Server from '../lib/server/server-prod.js';
-const server = new Server();
+import Config from '../lib/common/config.js';
+
+const config = new Config({
+  development: false,
+});
+await config.load();
+
+const server = new Server(config);
 await server.start();
