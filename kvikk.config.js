@@ -12,6 +12,16 @@ export default [
     },
   },
 
+  // URL paths
+  {
+    paths: {
+      // base: '/',
+      // public: '/public',
+      // css: '/css',
+      // js: '/js',
+    },
+  },
+
   // Server
   {
     server: {
