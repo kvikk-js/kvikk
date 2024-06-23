@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "description": "",
+  "main": "./lib/main.js",
   "bin": {
     "kvikk": "./bin/kvikk.js"
   },

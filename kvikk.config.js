@@ -9,6 +9,8 @@ export default [
       // system: './system',
       // build: './build',
       // pages: './pages',
+      // css: './css',
+      // js: './js',
     },
   },
 
@@ -17,8 +19,6 @@ export default [
     paths: {
       // base: '/',
       // public: '/public',
-      // css: '/css',
-      // js: '/js',
     },
   },
 

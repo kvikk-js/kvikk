@@ -26,9 +26,9 @@ export default class WarpCard extends LitElement {
     const slot = this.shadowRoot.querySelector('#slot');
     this.slt = slot.assignedNodes();
     if (this.slt.length === 0) {
-      console.log('No content is available');
+      //console.log('No content is available');
     } else {
-      console.log('Content available', this.slt);
+      //console.log('Content available');
     }
   }
 
