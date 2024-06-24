@@ -1,4 +1,11 @@
 export default [
+  // Application
+  {
+    application: {
+      // name: 'kvikk.js',
+    },
+  },
+
   // Directories
   {
     directories: {

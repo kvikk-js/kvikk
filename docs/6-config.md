@@ -25,6 +25,29 @@ export default [
 
 The config is used by both the Kvikk.js server and the assets build process. The kvikk.config.js file will not be bundled up into the browser asset bundle.
 
+## Application
+
+The `application` object control geneic application config.
+
+```js
+export default [
+  {
+    application: {
+      name: 'Kvikk.js',
+    },
+  },
+];
+```
+
+### name
+
+Defines a name of the application. 
+
+This property is used for different purposes in the application:
+
+  * Value for the application name in the logger
+
+
 ## Directories
  
 The `directories` object control the directory structure on the file system of an application.
