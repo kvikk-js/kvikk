@@ -7,6 +7,15 @@
   "bin": {
     "kvikk": "./bin/kvikk.js"
   },
+  "files": [
+    "package.json",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE",
+    "types",
+    "bin",
+    "lib"
+  ],
   "imports": {
     "#components/*": "./components/*",
     "#layouts/*": "./layouts/*"
