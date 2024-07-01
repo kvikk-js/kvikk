@@ -7,4 +7,5 @@ const config = new Config({
 await config.load();
 
 const server = new Server(config);
+await server.initialize();
 await server.start();

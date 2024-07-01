@@ -13,6 +13,5 @@ export default (page, header) => {
       <body>
         ${page}
       </body>
-      <html></html>
     </html> `;
 };

@@ -29,6 +29,7 @@ program
     await config.load();
 
     const server = new ServerProduction(config);
+    await server.initialize();
     await server.start();
   });
 
@@ -44,6 +45,7 @@ program
     await config.load();
 
     const server = new ServerDevelopment(config);
+    await server.initialize();
     await server.start();
   });
 

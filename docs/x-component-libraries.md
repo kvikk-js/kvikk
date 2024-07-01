@@ -10,3 +10,5 @@ Lit based component libraries:
 # Inspiration
 
  * https://blueprint.the-tractor.store/
+ * https://github.com/bradtraversy/design-resources-for-developers
+ * https://nodesource.com/blog/ssr-load-issues-in-n
