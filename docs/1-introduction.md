@@ -1,6 +1,6 @@
 # Introduction
 
-Kvikk.js aim to make it easy to build highly performant web applications with Lit based Web Components. 
+Hubro aim to make it easy to build highly performant web applications with Lit based Web Components. 
 
 
 

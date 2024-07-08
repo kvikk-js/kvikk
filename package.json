@@ -1,10 +1,10 @@
 {
-  "name": "kvikk",
+  "name": "hubro",
   "version": "0.0.3",
   "type": "module",
   "description": "",
   "bin": {
-    "kvikk": "./bin/kvikk.js"
+    "hubro": "./bin/bin.js"
   },
   "files": [
     "CHANGELOG.md",

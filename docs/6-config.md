@@ -1,6 +1,6 @@
 # Config
 
-A Kvikk.js application can be configured through a kvikk.config.js file in the root of the project. The kvikk.config.js is a ESM module which exports an Array of config objects as default. 
+A Hubro application can be configured through a hubro.config.js file in the root of the project. The hubro.config.js is a ESM module which exports an Array of config objects as default. 
 
 Example of configuring logging to log on debug level but not log requests and turn compression off:
 
@@ -23,7 +23,7 @@ export default [
 ];
 ```
 
-The config is used by both the Kvikk.js server and the assets build process. The kvikk.config.js file will not be bundled up into the browser asset bundle.
+The config is used by both the Hubro server and the assets build process. The hubro.config.js file will not be bundled up into the browser asset bundle.
 
 ## Application
 
@@ -33,7 +33,7 @@ The `application` object control geneic application config.
 export default [
   {
     application: {
-      name: 'Kvikk.js',
+      name: 'Hubro',
     },
   },
 ];
@@ -86,7 +86,7 @@ If `src` is configured to `./source` the application directory structure will be
 
 ```sh
 |--/package.json
-|--/kvikk.config.js
+|--/hubro.config.js
 |--/source
 |  |--/components
 |  |--/layouts
@@ -200,4 +200,4 @@ Defaults to `/public`.
 
 ## Environment variables
 
-Kvikk.js comes with built-in support for environment variables.
+Hubro comes with built-in support for environment variables.

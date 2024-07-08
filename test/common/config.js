@@ -54,7 +54,7 @@ test('Config - .development', async (t) => {
 test('Config - .name', async (t) => {
   await t.test('Get value', () => {
     const config = new Config();
-    assert.strictEqual(config.name, 'Kvikk.js', 'Should be "kvikk.js"');
+    assert.strictEqual(config.name, 'Hubro', 'Should be "Hubro"');
   });
 
   await t.test('Set value', () => {

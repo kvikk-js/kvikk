@@ -15,11 +15,11 @@ const pkg = JSON.parse(pkgJson);
 
 const program = new Command();
 
-program.name('Kvikk.js').description('Kvikk.js application').version(pkg.version);
+program.name('Hubro').description('Hubro Apparatus').version(pkg.version);
 
 program
   .command('start')
-  .description('Starts a Kvikk.js application in production mode')
+  .description('Starts a Hubro application in production mode')
   .option('-p, --path <path>', 'Path to the root of the application')
   .action(async function () {
     const config = new Config({
@@ -35,7 +35,7 @@ program
 
 program
   .command('dev')
-  .description('Starts a Kvikk.js application in development mode')
+  .description('Starts a Hubro application in development mode')
   .option('-p, --path <path>', 'Path to the root of the application')
   .action(async function () {
     const config = new Config({
@@ -51,7 +51,7 @@ program
 
 program
   .command('build')
-  .description('Build and prepare a Kvikk.js application for production')
+  .description('Build and prepare a Hubro application for production')
   .action(async function () {
     const config = new Config({
       development: false,

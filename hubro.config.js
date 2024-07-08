@@ -2,7 +2,7 @@ export default [
   // Application
   {
     application: {
-      // name: 'kvikk.js',
+      // name: 'Hubro',
     },
   },
 
@@ -42,7 +42,7 @@ export default [
     logging: {
       // requests: false,
       // level: 'debug',
-      // name: 'Kvikk.js',
+      // name: 'Hubro',
     },
   },
 
