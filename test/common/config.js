@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 
 import Config from '../../lib/common/config.js';
+import { resolveCwd } from '../../lib/common/utils.js';
 
 // Semver regex
 // https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
@@ -294,5 +295,114 @@ test('Config - .dirJs', async (t) => {
         'Should throw if absolute',
       );
     }
+  });
+});
+
+test('Config - .urlPathBase', async (t) => {
+  await t.test('Set path - Default', () => {
+    const config = new Config();
+    assert.equal(config.urlPathBase, '/', 'Should be /');
+  });
+
+  await t.test('Set path - Set default /', () => {
+    const config = new Config();
+    config.urlPathBase = '/';
+    assert.equal(config.urlPathBase, '/', 'Should be /');
+  });
+
+  await t.test('Set path - Simple padded path', () => {
+    const config = new Config();
+    config.urlPathBase = '/base/';
+    assert.equal(config.urlPathBase, '/base/', 'Should be /base/');
+  });
+
+  await t.test('Set path - Simple no padded path', () => {
+    const config = new Config();
+    config.urlPathBase = 'base';
+    assert.equal(config.urlPathBase, '/base/', 'Should be /base/');
+  });
+
+  await t.test('Set path - Simple whitespace padded path', () => {
+    const config = new Config();
+    config.urlPathBase = '  base  ';
+    assert.equal(config.urlPathBase, '/base/', 'Should be /base/');
+  });
+});
+
+test('Config - .urlPathPublic', async (t) => {
+  await t.test('Set path - Default', () => {
+    const config = new Config();
+    assert.equal(config.urlPathPublic, '/public/', 'Should be /public/');
+  });
+
+  await t.test('Set path - Simple padded path', () => {
+    const config = new Config();
+    config.urlPathPublic = '/pub/';
+    assert.equal(config.urlPathPublic, '/pub/', 'Should be /pub/');
+  });
+
+  await t.test('Set path - Simple no padded path', () => {
+    const config = new Config();
+    config.urlPathPublic = 'pub';
+    assert.equal(config.urlPathPublic, '/pub/', 'Should be /pub/');
+  });
+
+  await t.test('Set path - Simple whitespace padded path', () => {
+    const config = new Config();
+    config.urlPathPublic = '  pub  ';
+    assert.equal(config.urlPathPublic, '/pub/', 'Should be /pub/');
+  });
+});
+
+test('Config - .load()', async (t) => {
+  await t.test('Load file based user config', async () => {
+    const cwd = path.join(resolveCwd(), '/fixtures/config');
+
+    const config = new Config({ cwd });
+    await config.load();
+
+    assert.equal(config.serverPort, 9000, 'Should be same as in the user config');
+  });
+
+  await t.test('Load method provided config - Config objects as arguments', async () => {
+    const cwd = path.join(resolveCwd(), '/fixtures/config');
+
+    const config = new Config({ cwd });
+    await config.load(
+      {
+        application: {
+          name: 'bar',
+        },
+      },
+      {
+        server: {
+          port: 8888,
+        },
+      },
+    );
+
+    assert.equal(config.name, 'bar', 'Should be same as provided to load()');
+    assert.equal(config.serverPort, 8888, 'Should be same as provided to load()');
+  });
+
+  await t.test('Load method provided config - Array of config objects', async () => {
+    const cwd = path.join(resolveCwd(), '/fixtures/config');
+
+    const config = new Config({ cwd });
+    await config.load([
+      {
+        application: {
+          name: 'bar',
+        },
+      },
+      {
+        server: {
+          port: 8888,
+        },
+      },
+    ]);
+
+    assert.equal(config.name, 'bar', 'Should be same as provided to load()');
+    assert.equal(config.serverPort, 8888, 'Should be same as provided to load()');
   });
 });

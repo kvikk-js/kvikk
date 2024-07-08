@@ -175,7 +175,7 @@ export default [
   {
     paths: {
       base: '/',
-      public: '/public',
+      public: '/public/',
     },
   },
 ];
@@ -183,9 +183,13 @@ export default [
 
 ### base
 
-Defines a base prefix to apply to all routes in the application. Defaults to `/`.
+Defines a base to apply as a prefix to all routes in the application. Defaults to `/`.
 
-This makes it possible to deploy an application at a sub-path of a domain. If you, as an example, configure `base` to `/my-app` the root of your application will be at `http://localhost:4000/my-app` and all other routes will live under this path.
+This makes it possible to deploy an application at a sub-path of a domain. 
+
+Example; If you configure `base` to `/my-app/` the root of your application will be at `http://localhost:4000/my-app/` and all other routes will live under this path.
+
+The value should start and end with a forward slash. If not, the value will be padded with a forward slash at both start and end. This padding is done to adher to [relative URL resolving](https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references ).
 
 ### public
 

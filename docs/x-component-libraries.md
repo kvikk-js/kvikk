@@ -2,13 +2,21 @@
 
 Lit based component libraries:
 
+ * https://www.mdui.org/en/
  * https://opensource.adobe.com/spectrum-web-components/
  * https://ux.redhat.com/ 
  * https://shoelace.style/
  * https://nordhealth.design/
+ * https://mapsplatform.google.com/resources/blog/build-maps-faster-web-components/
+ 
 
 # Inspiration
 
  * https://blueprint.the-tractor.store/
  * https://github.com/bradtraversy/design-resources-for-developers
+ * https://github.com/troxler/awesome-css-frameworks
  * https://nodesource.com/blog/ssr-load-issues-in-n
+
+# Features
+ * https://markdown-it.github.io/
+ * https://developer.chrome.com/docs/workbox
