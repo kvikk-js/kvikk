@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
@@ -67,9 +68,11 @@ test('Config - .name', async (t) => {
 test('Config - .cwd', async (t) => {
   await t.test('Default behaviour', () => {
     const config = new Config();
-    assert.ok(path.isAbsolute(config.cwd), 'Should absolute path');
+    assert.ok(config.cwd instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.cwd)), 'Should resolve to an absolute path');
 
     try {
+      // @ts-ignore
       config.cwd = '/tmp';
     } catch (err) {
       assert.match(err.message, /Cannot set read-only property./, 'Should throw if being set');
@@ -77,15 +80,15 @@ test('Config - .cwd', async (t) => {
   });
 
   await t.test('Custom cwd - Relative path', () => {
-    const config = new Config({ cwd: './tmp' });
-    assert.ok(path.isAbsolute(config.cwd), 'Should resolve to an absolute path');
-    assert.notEqual(config.cwd, '/tmp', 'Should NOT be same as set on constructor');
+    const config = new Config({ cwd: './tmp/some/path' });
+    assert.ok(path.isAbsolute(fileURLToPath(config.cwd)), 'Should resolve to an absolute path');
+    assert.ok(config.cwd.href.endsWith('/tmp/some/path'));
   });
 
   await t.test('Custom cwd - Absolute path', () => {
-    const config = new Config({ cwd: '/tmp' });
-    assert.ok(path.isAbsolute(config.cwd), 'Should resolve to an absolute path');
-    assert.equal(config.cwd, '/tmp', 'Should be same as set on constructor');
+    const config = new Config({ cwd: '/tmp/some/path' });
+    assert.ok(path.isAbsolute(fileURLToPath(config.cwd)), 'Should resolve to an absolute path');
+    assert.ok(config.cwd.href.endsWith('/tmp/some/path'));
   });
 });
 
