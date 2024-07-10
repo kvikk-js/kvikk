@@ -183,7 +183,9 @@ export default [
 
 ### base
 
-Defines a base to apply as a prefix to all routes in the application. Defaults to `/`.
+Defines a base to apply as a prefix to all routes in the application. 
+
+Defaults to `/`.
 
 This makes it possible to deploy an application at a sub-path of a domain. 
 
@@ -195,8 +197,9 @@ The value should start and end with a forward slash. If not, the value will be p
 
 Defines the URL path for the "public" static files. Files stored in the directory configured for `directories.public` will be served on this path.
 
-Defaults to `/public`.
+Defaults to `/public/`.
 
+The value should start and end with a forward slash. If not, the value will be padded with a forward slash at both start and end. This padding is done to adher to [relative URL resolving](https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references ).
 
 ## Environment variables
 
