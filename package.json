@@ -47,7 +47,7 @@
     "dotenv": "16.4.5",
     "fastify": "4.28.1",
     "fastify-plugin": "4.5.1",
-    "glob": "10.4.2",
+    "glob": "10.4.5",
     "http-errors": "2.0.0",
     "pino": "9.2.0",
     "pino-pretty": "11.2.1",
