@@ -292,7 +292,12 @@ test('Config - .dirCss', async (t) => {
   await t.test('Custom cwd - Relative path', () => {
     const config = new Config({ cwd: '/tmp' });
     config.dirCss = './styles';
-    assert.equal(config.dirCss, './styles', 'Should be ./styles');
+
+    assert.ok(config.dirCss instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirCss)), 'Should resolve to an absolute path');
+    assert.ok(config.dirCss.href.endsWith('/tmp/build/styles'), 'Should end with set path');
+
+    // assert.equal(config.dirCss, './styles', 'Should be ./styles');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -313,7 +318,12 @@ test('Config - .dirJs', async (t) => {
   await t.test('Custom cwd - Relative path', () => {
     const config = new Config({ cwd: '/tmp' });
     config.dirJs = './scripts';
-    assert.equal(config.dirJs, './scripts', 'Should be ./scripts');
+
+    assert.ok(config.dirJs instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirJs)), 'Should resolve to an absolute path');
+    assert.ok(config.dirJs.href.endsWith('/tmp/build/scripts'), 'Should end with set path');
+
+    // assert.equal(config.dirJs, './scripts', 'Should be ./scripts');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -333,56 +343,65 @@ test('Config - .dirJs', async (t) => {
 test('Config - .urlPathBase', async (t) => {
   await t.test('Set path - Default', () => {
     const config = new Config();
-    assert.equal(config.urlPathBase, '/', 'Should be /');
+    assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathBase.pathname, '/', 'Should be /');
   });
 
   await t.test('Set path - Set default /', () => {
     const config = new Config();
     config.urlPathBase = '/';
-    assert.equal(config.urlPathBase, '/', 'Should be /');
+    assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathBase.pathname, '/', 'Should be /');
   });
 
   await t.test('Set path - Simple padded path', () => {
     const config = new Config();
     config.urlPathBase = '/base/';
-    assert.equal(config.urlPathBase, '/base/', 'Should be /base/');
+    assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathBase.pathname, '/base/', 'Should be /base/');
   });
 
   await t.test('Set path - Simple no padded path', () => {
     const config = new Config();
     config.urlPathBase = 'base';
-    assert.equal(config.urlPathBase, '/base/', 'Should be /base/');
+    assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathBase.pathname, '/base/', 'Should be /base/');
   });
 
   await t.test('Set path - Simple whitespace padded path', () => {
     const config = new Config();
     config.urlPathBase = '  base  ';
-    assert.equal(config.urlPathBase, '/base/', 'Should be /base/');
+    assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathBase.pathname, '/base/', 'Should be /base/');
   });
 });
 
 test('Config - .urlPathPublic', async (t) => {
   await t.test('Set path - Default', () => {
     const config = new Config();
-    assert.equal(config.urlPathPublic, '/public/', 'Should be /public/');
+    assert.ok(config.urlPathPublic instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathPublic.pathname, '/public/', 'Should be /public/');
   });
 
   await t.test('Set path - Simple padded path', () => {
     const config = new Config();
     config.urlPathPublic = '/pub/';
-    assert.equal(config.urlPathPublic, '/pub/', 'Should be /pub/');
+    assert.ok(config.urlPathPublic instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathPublic.pathname, '/pub/', 'Should be /pub/');
   });
 
   await t.test('Set path - Simple no padded path', () => {
     const config = new Config();
     config.urlPathPublic = 'pub';
-    assert.equal(config.urlPathPublic, '/pub/', 'Should be /pub/');
+    assert.ok(config.urlPathPublic instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathPublic.pathname, '/pub/', 'Should be /pub/');
   });
 
   await t.test('Set path - Simple whitespace padded path', () => {
     const config = new Config();
     config.urlPathPublic = '  pub  ';
-    assert.equal(config.urlPathPublic, '/pub/', 'Should be /pub/');
+    assert.ok(config.urlPathPublic instanceof URL, 'Should be a URL object');
+    assert.equal(config.urlPathPublic.pathname, '/pub/', 'Should be /pub/');
   });
 });
 
@@ -441,26 +460,40 @@ test('Config - .load()', async (t) => {
 
 test('Config - .urlPathToJs()', async (t) => {
   await t.test('Default', () => {
+    const config = new Config();
+    const result = config.urlPathToJs();
+
+    assert.ok(result instanceof URL, 'Should be a URL object');
+    assert.equal(result.pathname, '/_/js/', 'Should be "/_/js/"');
+  });
+
+  await t.test('Default - Development mode is false', () => {
+    const config = new Config({ development: false });
+    const result = config.urlPathToJs();
+
+    assert.ok(result instanceof URL, 'Should be a URL object');
+    assert.equal(result.pathname, '/public/js/', 'Should be "/public/js/"');
+  });
+
+  await t.test('Custom directories', () => {
     const config = new Config({ cwd: '/tmp' });
     config.dirSrc = './src';
     config.dirBuild = './out';
     config.dirJs = './scripts';
 
     const result = config.urlPathToJs('/some/file.js');
-    console.log('RESULT', result);
 
     assert.ok(result instanceof URL, 'Should be a URL object');
     assert.equal(result.pathname, '/_/scripts/some/file.js');
   });
 
-  await t.test('Default', () => {
+  await t.test('Custom directories - Development mode is false', () => {
     const config = new Config({ cwd: '/tmp', development: false });
     config.dirSrc = './src';
     config.dirBuild = './out';
     config.dirJs = './scripts';
 
     const result = config.urlPathToJs('/some/file.js');
-    console.log('RESULT', result);
 
     assert.ok(result instanceof URL, 'Should be a URL object');
     assert.equal(result.pathname, '/public/scripts/some/file.js');
