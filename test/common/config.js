@@ -408,7 +408,7 @@ test('Config - .urlPathPublic', async (t) => {
 test('Config - .load()', async (t) => {
   await t.test('Load file based user config', async () => {
     const cwd = path.join(resolveCwd(), '/fixtures/config');
-
+    console.log('AAA', cwd);
     const config = new Config({ cwd });
     await config.load();
 
@@ -417,7 +417,7 @@ test('Config - .load()', async (t) => {
 
   await t.test('Load method provided config - Config objects as arguments', async () => {
     const cwd = path.join(resolveCwd(), '/fixtures/config');
-
+    console.log('BBB', cwd);
     const config = new Config({ cwd });
     await config.load(
       {
