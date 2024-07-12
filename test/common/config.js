@@ -88,7 +88,7 @@ test('Config - .cwd', async (t) => {
   await t.test('Custom cwd - Absolute path', () => {
     const config = new Config({ cwd: '/tmp/some/path' });
     assert.ok(path.isAbsolute(fileURLToPath(config.cwd)), 'Should resolve to an absolute path');
-    assert.ok(config.cwd.href.endsWith('/tmp/some/path'));
+    assert.ok(config.cwd.href.endsWith('/tmp/some/path'), 'Should end with set path');
   });
 });
 
@@ -97,8 +97,14 @@ test('Config - .dirSrc', async (t) => {
     const config = new Config({ cwd: '/tmp' });
     config.dirSrc = './src';
 
+    assert.ok(config.dirSrc instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirSrc)), 'Should resolve to an absolute path');
+    assert.ok(config.dirSrc.href.endsWith('/tmp/src'), 'Should end with set path');
+
+    /*
     assert.ok(path.isAbsolute(config.dirSrc), 'Should resolve to an absolute path');
     assert.equal(config.dirSrc, '/tmp/src', 'Should be /tmp/src');
+    */
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -121,8 +127,12 @@ test('Config - .dirBuild', async (t) => {
     config.dirSrc = './src';
     config.dirBuild = './build';
 
-    assert.ok(path.isAbsolute(config.dirBuild), 'Should resolve to an absolute path');
-    assert.equal(config.dirBuild, '/tmp/src/build', 'Should be /tmp/src/build');
+    // assert.ok(path.isAbsolute(config.dirBuild), 'Should resolve to an absolute path');
+    // assert.equal(config.dirBuild, '/tmp/src/build', 'Should be /tmp/src/build');
+
+    assert.ok(config.dirBuild instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirBuild)), 'Should resolve to an absolute path');
+    assert.ok(config.dirBuild.href.endsWith('/tmp/src/build'), 'Should end with set path');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -145,8 +155,12 @@ test('Config - .dirCompoents', async (t) => {
     config.dirSrc = './src';
     config.dirComponents = './components';
 
-    assert.ok(path.isAbsolute(config.dirComponents), 'Should resolve to an absolute path');
-    assert.equal(config.dirComponents, '/tmp/src/components', 'Should be /tmp/src/build');
+    // assert.ok(path.isAbsolute(config.dirComponents), 'Should resolve to an absolute path');
+    // assert.equal(config.dirComponents, '/tmp/src/components', 'Should be /tmp/src/build');
+
+    assert.ok(config.dirComponents instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirComponents)), 'Should resolve to an absolute path');
+    assert.ok(config.dirComponents.href.endsWith('/tmp/src/components'), 'Should end with set path');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -169,8 +183,12 @@ test('Config - .dirLayouts', async (t) => {
     config.dirSrc = './src';
     config.dirLayouts = './layouts';
 
-    assert.ok(path.isAbsolute(config.dirLayouts), 'Should resolve to an absolute path');
-    assert.equal(config.dirLayouts, '/tmp/src/layouts', 'Should be /tmp/src/layouts');
+    // assert.ok(path.isAbsolute(config.dirLayouts), 'Should resolve to an absolute path');
+    // assert.equal(config.dirLayouts, '/tmp/src/layouts', 'Should be /tmp/src/layouts');
+
+    assert.ok(config.dirLayouts instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirLayouts)), 'Should resolve to an absolute path');
+    assert.ok(config.dirLayouts.href.endsWith('/tmp/src/layouts'), 'Should end with set path');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -193,8 +211,11 @@ test('Config - .dirPublic', async (t) => {
     config.dirSrc = './src';
     config.dirPublic = './public';
 
-    assert.ok(path.isAbsolute(config.dirPublic), 'Should resolve to an absolute path');
-    assert.equal(config.dirPublic, '/tmp/src/public', 'Should be /tmp/src/public');
+    // assert.ok(path.isAbsolute(config.dirPublic), 'Should resolve to an absolute path');
+    // assert.equal(config.dirPublic, '/tmp/src/public', 'Should be /tmp/src/public');
+    assert.ok(config.dirPublic instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirPublic)), 'Should resolve to an absolute path');
+    assert.ok(config.dirPublic.href.endsWith('/tmp/src/public'), 'Should end with set path');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -217,8 +238,12 @@ test('Config - .dirSystem', async (t) => {
     config.dirSrc = './src';
     config.dirSystem = './system';
 
-    assert.ok(path.isAbsolute(config.dirSystem), 'Should resolve to an absolute path');
-    assert.equal(config.dirSystem, '/tmp/src/system', 'Should be /tmp/src/system');
+    // assert.ok(path.isAbsolute(config.dirSystem), 'Should resolve to an absolute path');
+    // assert.equal(config.dirSystem, '/tmp/src/system', 'Should be /tmp/src/system');
+
+    assert.ok(config.dirSystem instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirSystem)), 'Should resolve to an absolute path');
+    assert.ok(config.dirSystem.href.endsWith('/tmp/src/system'), 'Should end with set path');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -241,8 +266,12 @@ test('Config - .dirPages', async (t) => {
     config.dirSrc = './src';
     config.dirPages = './pages';
 
-    assert.ok(path.isAbsolute(config.dirPages), 'Should resolve to an absolute path');
-    assert.equal(config.dirPages, '/tmp/src/pages', 'Should be /tmp/src/pages');
+    // assert.ok(path.isAbsolute(config.dirPages), 'Should resolve to an absolute path');
+    // assert.equal(config.dirPages, '/tmp/src/pages', 'Should be /tmp/src/pages');
+
+    assert.ok(config.dirPages instanceof URL, 'Should be a URL object');
+    assert.ok(path.isAbsolute(fileURLToPath(config.dirPages)), 'Should resolve to an absolute path');
+    assert.ok(config.dirPages.href.endsWith('/tmp/src/pages'), 'Should end with set path');
   });
 
   await t.test('Custom cwd - Absolute path', () => {
@@ -407,5 +436,33 @@ test('Config - .load()', async (t) => {
 
     assert.equal(config.name, 'bar', 'Should be same as provided to load()');
     assert.equal(config.serverPort, 8888, 'Should be same as provided to load()');
+  });
+});
+
+test('Config - .urlPathToJs()', async (t) => {
+  await t.test('Default', () => {
+    const config = new Config({ cwd: '/tmp' });
+    config.dirSrc = './src';
+    config.dirBuild = './out';
+    config.dirJs = './scripts';
+
+    const result = config.urlPathToJs('/some/file.js');
+    console.log('RESULT', result);
+
+    assert.ok(result instanceof URL, 'Should be a URL object');
+    assert.equal(result.pathname, '/_/scripts/some/file.js');
+  });
+
+  await t.test('Default', () => {
+    const config = new Config({ cwd: '/tmp', development: false });
+    config.dirSrc = './src';
+    config.dirBuild = './out';
+    config.dirJs = './scripts';
+
+    const result = config.urlPathToJs('/some/file.js');
+    console.log('RESULT', result);
+
+    assert.ok(result instanceof URL, 'Should be a URL object');
+    assert.equal(result.pathname, '/public/scripts/some/file.js');
   });
 });
