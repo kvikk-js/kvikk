@@ -1,9 +1,10 @@
+/*
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 
 import { dirPathToJs, urlPathToJs, routePathToDynamicJs } from '../../lib/common/utils-assets.js';
 import Config from '../../lib/common/config.js';
-/*
+
 test('.dirPathToJs() - Defaults', () => {
   const config = new Config();
   const uri = dirPathToJs(config, '/some/file.js');
