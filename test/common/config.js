@@ -324,30 +324,36 @@ test('Config - .urlPathBase', async (t) => {
     assert.equal(config.urlPathBase.pathname, '/', 'Should be /');
   });
 
-  await t.test('Set path - Set default /', () => {
+  await t.test('Set path - Absolute path', () => {
     const config = new Config();
-    config.urlPathBase = '/';
+    try {
+      config.urlPathBase = '/app';
+    } catch (err) {
+      assert.match(
+        err.message,
+        /Value for paths.base is not relative. Must be relative path./,
+        'Should throw if absolute',
+      );
+    }
+  });
+
+  await t.test('Set path - Set default ./', () => {
+    const config = new Config();
+    config.urlPathBase = './';
     assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
     assert.equal(config.urlPathBase.pathname, '/', 'Should be /');
   });
 
   await t.test('Set path - Simple padded path', () => {
     const config = new Config();
-    config.urlPathBase = '/base/';
+    config.urlPathBase = './base/';
     assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
     assert.equal(config.urlPathBase.pathname, '/base/', 'Should be /base/');
   });
 
   await t.test('Set path - Simple no padded path', () => {
     const config = new Config();
-    config.urlPathBase = 'base';
-    assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
-    assert.equal(config.urlPathBase.pathname, '/base/', 'Should be /base/');
-  });
-
-  await t.test('Set path - Simple whitespace padded path', () => {
-    const config = new Config();
-    config.urlPathBase = '  base  ';
+    config.urlPathBase = './base';
     assert.ok(config.urlPathBase instanceof URL, 'Should be a URL object');
     assert.equal(config.urlPathBase.pathname, '/base/', 'Should be /base/');
   });
@@ -360,23 +366,29 @@ test('Config - .urlPathPublic', async (t) => {
     assert.equal(config.urlPathPublic.pathname, '/public/', 'Should be /public/');
   });
 
+  await t.test('Set path - Absolute path', () => {
+    const config = new Config();
+    try {
+      config.urlPathPublic = '/pub';
+    } catch (err) {
+      assert.match(
+        err.message,
+        /Value for paths.public is not relative. Must be relative path./,
+        'Should throw if absolute',
+      );
+    }
+  });
+
   await t.test('Set path - Simple padded path', () => {
     const config = new Config();
-    config.urlPathPublic = '/pub/';
+    config.urlPathPublic = './pub/';
     assert.ok(config.urlPathPublic instanceof URL, 'Should be a URL object');
     assert.equal(config.urlPathPublic.pathname, '/pub/', 'Should be /pub/');
   });
 
   await t.test('Set path - Simple no padded path', () => {
     const config = new Config();
-    config.urlPathPublic = 'pub';
-    assert.ok(config.urlPathPublic instanceof URL, 'Should be a URL object');
-    assert.equal(config.urlPathPublic.pathname, '/pub/', 'Should be /pub/');
-  });
-
-  await t.test('Set path - Simple whitespace padded path', () => {
-    const config = new Config();
-    config.urlPathPublic = '  pub  ';
+    config.urlPathPublic = './pub';
     assert.ok(config.urlPathPublic instanceof URL, 'Should be a URL object');
     assert.equal(config.urlPathPublic.pathname, '/pub/', 'Should be /pub/');
   });
