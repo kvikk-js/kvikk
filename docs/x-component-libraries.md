@@ -22,3 +22,6 @@ Lit based component libraries:
  * https://developer.chrome.com/docs/workbox
  * https://lamplightdev.com/blog/2024/01/10/streaming-html-out-of-order-without-javascript/
  * https://www.npmjs.com/package/@fastify/early-hints
+
+# Other
+ * https://microfrontend.dev/
