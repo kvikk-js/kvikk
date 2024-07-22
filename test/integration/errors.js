@@ -38,7 +38,7 @@ test('Integration', async (t) => {
     assert.equal(response.ok, true, 'Should result in an OK response');
     assert.equal(route.test(body), true, 'Should contain route path');
   });
-  /*
+
   await t.test('Route: ./pages/fixed/', async () => {
     const response = await fetch(new URL('./pages/fixed/', address));
     const body = await response.text();
@@ -71,6 +71,6 @@ test('Integration', async (t) => {
     assert.equal(response.ok, true, 'Should result in an OK response');
     assert.equal(route.test(body), true, 'Should contain route path');
   });
-*/
+
   await app.stop();
 });
