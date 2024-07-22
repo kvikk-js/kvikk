@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-//import path from 'node:path';
+import path from 'node:path';
 
 import { config } from 'hubro/test';
 import server from 'hubro/server';
@@ -22,7 +22,6 @@ test('Integration', async (t) => {
   await app.stop();
 });
 
-/*
 test('Integration', async (t) => {
   const app = await server({
     cwd: path.join(process.cwd(), '/fixtures/router-paths/'),
@@ -39,7 +38,7 @@ test('Integration', async (t) => {
     assert.equal(response.ok, true, 'Should result in an OK response');
     assert.equal(route.test(body), true, 'Should contain route path');
   });
-
+  /*
   await t.test('Route: ./pages/fixed/', async () => {
     const response = await fetch(new URL('./pages/fixed/', address));
     const body = await response.text();
@@ -72,7 +71,6 @@ test('Integration', async (t) => {
     assert.equal(response.ok, true, 'Should result in an OK response');
     assert.equal(route.test(body), true, 'Should contain route path');
   });
-
+*/
   await app.stop();
 });
-*/
