@@ -24,8 +24,8 @@ export default [
   // URL paths
   {
     paths: {
-      // base: '/',
-      // public: '/public',
+      // base: './',
+      // public: './public/',
     },
   },
 
