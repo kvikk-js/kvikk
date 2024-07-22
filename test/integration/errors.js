@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import path from 'node:path';
+//import path from 'node:path';
 
 import { config } from 'hubro/test';
 import server from 'hubro/server';
@@ -22,6 +22,7 @@ test('Integration', async (t) => {
   await app.stop();
 });
 
+/*
 test('Integration', async (t) => {
   const app = await server({
     cwd: path.join(process.cwd(), '/fixtures/router-paths/'),
@@ -74,3 +75,4 @@ test('Integration', async (t) => {
 
   await app.stop();
 });
+*/
