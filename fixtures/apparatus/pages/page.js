@@ -1,9 +1,8 @@
-import { html, isServer } from 'lit';
+import { html } from 'lit';
 
-import layout from '#layouts/layout.js';
-
-import button from '#components/button.js';
-import card from '#components/card.js';
+import layout from '#layouts/layout.js';    // eslint-disable-line
+import button from '#components/button.js'; // eslint-disable-line
+import card from '#components/card.js';     // eslint-disable-line
 
 export const metadata = () => {
   return {

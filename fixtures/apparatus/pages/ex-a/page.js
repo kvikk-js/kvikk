@@ -1,6 +1,6 @@
 import { html } from 'lit';
 
-import card from '#components/card.js';
+import card from '#components/card.js'; // eslint-disable-line
 
 export default () => {
   return html`
