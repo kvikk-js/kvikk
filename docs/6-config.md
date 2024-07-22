@@ -27,7 +27,7 @@ The config is used by both the Hubro server and the assets build process. The hu
 
 ## Application
 
-The `application` object control geneic application config.
+The `application` config object control geneic application config.
 
 ```js
 export default [
@@ -50,7 +50,7 @@ This property is used for different purposes in the application:
 
 ## Directories
  
-The `directories` object control the directory structure on the file system of an application.
+The `directories` config object control the directory structure on the file system of an application.
 
 ```js
 export default [
@@ -168,35 +168,42 @@ This folder is relative to the `directories.build` folder. For example; if `js` 
 
 ## Paths
 
-The `paths` object control the URL structure of an application.
+The `paths` config object control the URL structure of an application.
 
 ```js
 export default [
   {
     paths: {
-      base: '/',
-      public: '/public/',
+      base: './',
+      public: './public/',
     },
   },
 ];
 ```
 
+All values must be relative paths relative to the root of the application.
+
 ### base
 
-Defines a base to apply as a prefix to all routes in the application. Defaults to `/`.
+Defines a base to apply as a prefix to all routes in the application. 
+
+Defaults to `./`.
 
 This makes it possible to deploy an application at a sub-path of a domain. 
 
-Example; If you configure `base` to `/my-app/` the root of your application will be at `http://localhost:4000/my-app/` and all other routes will live under this path.
+Example; If you configure `base` to `./my-app/` the root of your application will be at `http://localhost:4000/my-app/` and all other routes will live under this path.
 
-The value should start and end with a forward slash. If not, the value will be padded with a forward slash at both start and end. This padding is done to adher to [relative URL resolving](https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references ).
+The value should be relative and end with a forward slash. If value does not end 
+with a forward slash it will be padded with a forward slash at the end. This padding is done to adher to [relative URL resolving](https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references ).
 
 ### public
 
 Defines the URL path for the "public" static files. Files stored in the directory configured for `directories.public` will be served on this path.
 
-Defaults to `/public`.
+Defaults to `./public/`.
 
+The value should be relative and end with a forward slash. If value does not end 
+with a forward slash it will be padded with a forward slash at the end. This padding is done to adher to [relative URL resolving](https://developer.mozilla.org/en-US/docs/Web/API/URL_API/Resolving_relative_references ).
 
 ## Environment variables
 

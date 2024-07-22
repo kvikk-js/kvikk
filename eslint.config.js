@@ -14,7 +14,7 @@ export default [
     },
   },
   {
-    ignores: ['build/**/*.js', 'pages/*', 'components/*', 'layouts/*'],
+    ignores: ['build/**/*.js', 'components/*', 'layouts/*'],
   },
   eslintPluginPrettier,
 ];
