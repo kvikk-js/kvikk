@@ -41,6 +41,7 @@
     "@fastify/etag": "5.2.0",
     "@fastify/formbody": "7.4.0",
     "@fastify/static": "7.0.4",
+    "@lit-labs/ssr-client": "1.1.7",
     "@lit-labs/ssr": "3.2.2",
     "abslog": "2.4.4",
     "commander": "12.1.0",
